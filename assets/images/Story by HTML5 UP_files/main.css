@@ -163,7 +163,7 @@ input, select, textarea {
 		line-height: 1.65;
 	}
 
-	a, b {
+	a {
 		-moz-transition: color 0.2s ease-in-out;
 		-webkit-transition: color 0.2s ease-in-out;
 		-ms-transition: color 0.2s ease-in-out;
@@ -319,15 +319,15 @@ input, select, textarea {
 		color: #000000;
 	}
 
-	a, .b {
+	a {
 		color: #000000;
 	}
 
-		a:hover, .b:hover {
+		a:hover {
 			color: #47D3E5;
 		}
 
-	strong, .b {
+	strong, b {
 		color: #000000;
 	}
 
@@ -2614,12 +2614,12 @@ input, select, textarea {
 		box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
 	}
 
-	a.icon.style2:hover:before, b.icon.style2:hover:before  {
+	a.icon.style2:hover:before {
 		box-shadow: inset 0 0 0 1px #47D3E5;
 		color: #47D3E5;
 	}
 
-	a.icon.style2:active:before, b.icon.style2:active:before {
+	a.icon.style2:active:before {
 		background-color: rgba(71, 211, 229, 0.1);
 		box-shadow: inset 0 0 0 1px #47D3E5;
 		color: #47D3E5;
@@ -8270,7 +8270,7 @@ input, select, textarea {
 				color: #ffffff;
 			}
 
-				#wrapper > .invert a:hover, #wrapper > .invert b:hover {
+				#wrapper > .invert a:hover {
 					color: #47D3E5;
 				}
 
@@ -8433,12 +8433,12 @@ input, select, textarea {
 				box-shadow: inset 0 0 0 1px white;
 			}
 
-			#wrapper > .invert a.icon.style2:hover:before, #wrapper > .invert .b.icon.style2:hover:before {
+			#wrapper > .invert a.icon.style2:hover:before {
 				box-shadow: inset 0 0 0 1px #47D3E5;
 				color: #47D3E5;
 			}
 
-			#wrapper > .invert a.icon.style2:active:before, #wrapper > .invert .b.icon.style2:active:before  {
+			#wrapper > .invert a.icon.style2:active:before {
 				background-color: rgba(71, 211, 229, 0.1);
 				box-shadow: inset 0 0 0 1px #47D3E5;
 				color: #47D3E5;
@@ -8607,7 +8607,7 @@ input, select, textarea {
 /* My added styles*/
 
 .skills-images{
-	/* background-color: #64abb4; */
+	background-color: #64abb4;
 	width: 95%;
 }
 
@@ -8629,38 +8629,4 @@ input, select, textarea {
   
   .social-links:active {
 	text-decoration: underline;
-  }
-
-  article:nth-child(1) {
-	background: grey;
-  }
-  article:nth-child(2) {
-	background: rgb(199, 172, 172);
-  }
-  article:nth-child(3) {
-	background: rgb(255, 255, 0);
-  }
-  article:nth-child(4) {
-	background: rgb(139, 235, 234);
-  }
-  article:nth-child(5) {
-	background: rgb(225, 111, 111);
-  }
-  article:nth-child(6) {
-	background: rgb(204, 228, 227);
-  }
-  article:nth-child(7) {
-	background: rgb(242, 255, 103);
-  }
-  article:nth-child(8) {
-	background: rgb(131, 176, 252);
-  }
-  article:nth-child(9) {
-	background: rgb(168, 199, 183);
-  }
-  article:nth-child(10) {
-	background: rgb(33, 21, 31);
-  }
-  article:nth-child(11) {
-	background: rgb(255, 234, 7);
   }
