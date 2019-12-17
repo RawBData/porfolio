@@ -1,37 +1,37 @@
-Strongly Typed by HTML5 UP
+Story by HTML5 UP
 html5up.net | @ajlkn
 Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 
 
-This is Strongly Typed, a new site template with a minimal, semi-retro
-look (inspired by old instruction manuals) and, as you might guess from its
-name, a strong emphasis on type. It's fully responsive, built on HTML5/CSS3,
-and includes styling for all basic page elements. Demo images* are courtesy of
-regularjane, an incredibly talented photographer friend of mine. Be sure to
-check out more of her work over at deviantART:
+Say hello to Story, a brand new responsive one-pager for HTML5 UP! Inspired by my work
+on Carrd*, Story is built to be extremely modular and tweakable, and as such is entirely
+built on reusable, insanely customizable elements (like "spotlight" and "gallery") that
+can be endlessly duplicated and tweaked into whatever you need to tell your story --
+without, in many cases, touching *any* CSS. Check out index-demo.html for an interactive
+demo, and index.html for the actual template. Enjoy!
 
-http://regularjane.deviantart.com/
+Demo images** courtesy of Unsplash, a radtastic collection of CC0 (public domain) images
+you can use for pretty much whatever.
 
-(* = Not included! Only meant for use with my own on-site demo, so please do NOT download
-and/or use any of Jane's work without her explicit permission!)
+PS: Delete index-demo.html and assets/js/demo.js when you're done messing with the demo
+as neither are needed in production :)
 
-As usual, feedback, bug reports, and comments are not only welcome, but strongly
-encouraged :)
+(* = my other side project -- carrd.co)
+(** = not included)
 
 AJ
 aj@lkn.io | @ajlkn
-
-PS: Not sure how to get that contact form working? Give formspree.io a try (it's awesome).
 
 
 Credits:
 
 	Demo Images:
-		regularjane (regularjane.deviantart.com)
+		Unsplash (unsplash.com)
 
 	Icons:
 		Font Awesome (fontawesome.io)
 
 	Other:
 		jQuery (jquery.com)
+		Scrollex (github.com/ajlkn/jquery.scrollex)
 		Responsive Tools (github.com/ajlkn/responsive-tools)
