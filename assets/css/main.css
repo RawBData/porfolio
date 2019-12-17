@@ -8664,3 +8664,7 @@ input, select, textarea {
   article:nth-child(11) {
 	background: rgb(255, 234, 7);
   }
+
+  .personal-image{
+	  /* width: 50%; */
+  }
