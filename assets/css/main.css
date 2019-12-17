@@ -8635,40 +8635,61 @@ input, select, textarea {
 	background: rgb(223, 86, 86);
   }
   article:nth-child(2) {
-	background: grey;
+	background: rgb(255, 252, 157);
   }
   article:nth-child(3) {
-	background: rgb(199, 172, 172);
+	background: rgb(160, 160, 153);
   }
   article:nth-child(4) {
-	background: rgb(255, 255, 0);
+	background: grey;
   }
   article:nth-child(5) {
-	background: rgb(139, 235, 234);
+	background: rgb(199, 172, 172);
   }
   article:nth-child(6) {
-	background: rgb(225, 111, 111);
+	background: rgb(255, 255, 1);
   }
   article:nth-child(7) {
-	background: rgb(172, 245, 165);
+	background: rgb(139, 235, 234);
   }
   article:nth-child(8) {
-	background: rgb(204, 228, 227);
+	background: rgb(225, 111, 111);
   }
   article:nth-child(9) {
-	background: rgb(242, 255, 103);
+	background: rgb(172, 245, 165);
   }
   article:nth-child(10) {
-	background: rgb(131, 176, 252);
+	background: rgb(204, 228, 227);
   }
   article:nth-child(11) {
-	background: rgb(168, 199, 183);
+	background: rgb(242, 255, 103);
   }
   article:nth-child(12) {
-	background: rgb(33, 21, 31);
+	background: rgb(131, 176, 252);
   }
   article:nth-child(13) {
+	background: rgb(168, 199, 183);
+  }
+  article:nth-child(14) {
+	background: rgb(33, 21, 31);
+  }
+  article:nth-child(15) {
 	background: rgb(255, 234, 7);
+  }
+  article:nth-child(16) {
+	background: rgba(7, 255, 75, 0.38);;
+  }
+  article:nth-child(17) {
+	background: rgba(234, 7, 193, 0.51);;
+  }
+  article:nth-child(18) {
+	background: rgba(0, 217, 255, 0.16);
+  }
+  article:nth-child(19) {
+	background: rgba(139, 7, 255, 0.67);
+  }
+  article:nth-child(20) {
+	background: rgba(255, 181, 7, 0.83);
   }
 
   .personal-image{
