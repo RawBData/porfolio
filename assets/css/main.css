@@ -8695,3 +8695,29 @@ input, select, textarea {
   .personal-image{
 	  /* width: 50%; */
   }
+
+  .project-image-links{
+	box-shadow:none;
+  }
+
+  .project-image-links:hover{
+	box-shadow: 5px 5px 5px #47D3E5;
+	-moz-transition: all 0.1s ease-in;
+	-o-transition: all 0.1s ease-in;
+	-webkit-transition: all 0.1s ease-in;
+	transition: all 0.1s ease-in;
+}
+
+.project-image-links-right:hover{
+	box-shadow: -5px 5px 5px #47D3E5;
+	-moz-transition: all 0.1s ease-in;
+	-o-transition: all 0.1s ease-in;
+	-webkit-transition: all 0.1s ease-in;
+	transition: all 0.1s ease-in;
+}
+
+.projects{
+	padding: 5px 0 5px 0;
+}
+
+
