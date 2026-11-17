@@ -1,0 +1,73 @@
+/*
+ * Area 1: Design Tokens, Base Reset & Shared Toy-Brick Components
+ */
+
+:root {
+  --ink: #1b2333;
+  --paper: #fffdf5;
+  --red: #d8352a;
+  --yellow: #f6c21c;
+  --blue: #1e6fd9;
+  --green: #3aa655;
+  --sky: #9bdcff;
+  --muted: #5a6478;
+  --font-display: 'Fredoka', 'Trebuchet MS', 'Segoe UI', sans-serif;
+  --font-body: 'Atkinson Hyperlegible', 'Segoe UI', Helvetica, Arial, sans-serif;
+  --edge: 16px;
+  --outline: 3px solid var(--ink);
+  --press: 5px;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+
+body {
+  overflow: hidden;
+  background: var(--sky); color: var(--ink);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  font-family: var(--font-display); line-height: 1.1;
+  text-wrap: balance;
+}
+
+a { color: var(--blue); font-weight: 700; }
+a:focus-visible, button:focus-visible { outline: var(--outline); outline-offset: 3px; }
+[hidden] { display: none !important; }
+
+#stage {
+  position: fixed; inset: 0; display: block;
+  width: 100%; height: 100%;
+  outline: none; touch-action: none;
+}
+
+/* Shared UI Pieces */
+.panel { background: var(--paper); border: var(--outline); }
+
+.brick {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 16px 7px; border: 0;
+  border-bottom: var(--press) solid rgba(0, 0, 0, 0.28);
+  border-radius: 10px; background: var(--blue); color: #fff;
+  font-family: var(--font-display); font-size: 16px; font-weight: 600;
+  text-decoration: none; cursor: pointer;
+}
+.brick:hover { filter: brightness(1.08); }
+.brick:active { transform: translateY(3px); border-bottom-width: 2px; }
+.brick.red { background: var(--red); }
+.brick.green { background: var(--green); }
+.brick.yellow { background: var(--yellow); color: var(--ink); }
+
+.chip {
+  padding: 4px 14px; border-radius: 999px;
+  font-family: var(--font-display); font-size: 15px; font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}

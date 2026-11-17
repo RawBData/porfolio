@@ -1,0 +1,13 @@
+# Study notes: the pseudocode files and the dictionaries stay local.
+# Ignore every Markdown file...
+*.md
+
+# ...except the ones that belong on GitHub.
+!README.md
+!readme_breakdown.md
+
+# macOS folder metadata
+.DS_Store
+
+# The old HTML5 UP template site, archived on my computer only
+legacy/

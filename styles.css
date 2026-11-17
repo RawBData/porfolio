@@ -1,88 +1,11 @@
-:root{
-  /* layout: full-bleed toy island; HUD chips sit in the corners; a detail card docks right (bottom sheet on phones) */
-  --ink:#1b2333;
-  --paper:#fffdf5;
-  --red:#d8352a;
-  --yellow:#f6c21c;
-  --blue:#1e6fd9;
-  --green:#3aa655;
-  --sky:#9bdcff;
-  --muted:#5a6478;
-  --font-display:'Fredoka','Trebuchet MS','Segoe UI',sans-serif;
-  --font-body:'Atkinson Hyperlegible','Segoe UI',Helvetica,Arial,sans-serif;
-  color-scheme:light;
-}
-*{box-sizing:border-box}
-html,body{height:100%;margin:0}
-body{background:var(--sky);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.5;overflow:hidden;-webkit-font-smoothing:antialiased}
-#stage{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none;outline:none}
-h1,h2,h3{font-family:var(--font-display);margin:0;text-wrap:balance;line-height:1.1}
-a{color:var(--blue);font-weight:700}
-a:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+/*
+ * Brick Island Stylesheet Entry
+ * Imports the three major style areas:
+ *   1. css/base.css  - Design tokens, reset, stage & shared toy-brick UI pieces
+ *   2. css/hud.css   - Heads-up display, prompts, toast & touch controls
+ *   3. css/views.css - Detail card, plain-text résumé view & responsive layout
+ */
 
-/* HUD */
-.hud{position:fixed;z-index:5;display:flex;gap:10px;pointer-events:none}
-.hud>*{pointer-events:auto}
-#who{top:16px;left:16px;flex-direction:column;gap:4px;background:var(--paper);border:3px solid var(--ink);border-radius:14px;padding:10px 16px 12px;box-shadow:0 5px 0 var(--ink);max-width:min(340px,calc(100% - 32px))}
-#who h1{font-size:26px;font-weight:700}
-#who p{margin:0;color:var(--muted);font-size:14px}
-#tools{top:16px;right:16px;flex-wrap:wrap;justify-content:flex-end;max-width:calc(100% - 32px)}
-.brick{font-family:var(--font-display);font-weight:600;font-size:16px;color:#fff;background:var(--blue);border:0;border-bottom:5px solid rgba(0,0,0,.28);border-radius:10px;padding:9px 16px 7px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
-.brick:hover{filter:brightness(1.08)}
-.brick:active{transform:translateY(3px);border-bottom-width:2px}
-.brick.red{background:var(--red)}
-.brick.yellow{background:var(--yellow);color:var(--ink)}
-.brick.green{background:var(--green)}
-#score{left:16px;bottom:16px;flex-direction:column;gap:8px;align-items:flex-start}
-.chip{background:var(--paper);border:3px solid var(--ink);border-radius:999px;padding:4px 14px;font-family:var(--font-display);font-weight:600;font-size:15px;font-variant-numeric:tabular-nums}
-#keys{max-width:min(600px,62vw);line-height:1.9;background:rgba(27,35,51,.82);color:#fff;border-radius:12px;padding:8px 14px;font-size:14px}
-#keys kbd{font-family:var(--font-display);font-weight:600;background:#fff;color:var(--ink);border-radius:5px;padding:1px 7px;margin:0 2px;border-bottom:3px solid #b9c0cf}
-#prompt{left:50%;bottom:22px;transform:translateX(-50%)}
-#prompt[hidden],#toast[hidden],#card[hidden],#resume[hidden],#jump[hidden],#grab[hidden],#joy[hidden]{display:none}
-#toast{position:fixed;z-index:6;left:50%;top:84px;transform:translateX(-50%);background:var(--ink);color:#fff;font-family:var(--font-display);font-weight:600;padding:8px 18px;border-radius:999px}
-
-/* detail card */
-#card{position:fixed;z-index:7;top:84px;right:16px;bottom:16px;width:min(400px,calc(100% - 32px));height:fit-content;max-height:calc(100% - 100px);overflow:auto;background:var(--paper);border:3px solid var(--ink);border-radius:18px;box-shadow:0 7px 0 var(--ink);padding:0 0 18px}
-#card header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:16px 18px 14px;border-bottom:3px solid var(--ink);background:var(--zone,var(--yellow));color:var(--zone-ink,var(--ink));border-radius:14px 14px 0 0}
-#card header p{margin:0 0 4px;font-family:var(--font-display);font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
-#card h2{font-size:28px;font-weight:700}
-#card .body{padding:14px 18px 0;display:flex;flex-direction:column;gap:12px}
-#card .body p,#card .body ul{margin:0}
-#card ul{padding-left:20px;display:flex;flex-direction:column;gap:6px}
-.tags{display:flex;flex-wrap:wrap;gap:6px}
-.tags span{font-family:var(--font-display);font-weight:600;font-size:13px;background:#fff;border:2px solid var(--ink);border-radius:6px;padding:1px 8px}
-.links{display:flex;flex-wrap:wrap;gap:10px}
-.x{flex:none;width:36px;height:36px;border-radius:10px;border:3px solid var(--ink);background:#fff;color:var(--ink);font-family:var(--font-display);font-weight:700;font-size:18px;cursor:pointer;line-height:1}
-.mono{font-weight:700;overflow-wrap:anywhere}
-
-/* résumé view */
-#resume{position:fixed;inset:0;z-index:10;background:var(--paper);overflow:auto;padding:28px 16px 60px}
-#resume .sheet{max-width:68ch;margin:0 auto;display:flex;flex-direction:column;gap:26px}
-#resume .top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
-#resume h1{font-size:40px;font-weight:700}
-#resume h2{font-size:22px;font-weight:700;padding-bottom:6px;border-bottom:4px solid var(--yellow);margin-bottom:12px}
-#resume h3{font-size:18px;font-weight:600}
-#resume section>div{display:flex;flex-direction:column;gap:16px}
-#resume article{display:flex;flex-direction:column;gap:6px}
-#resume article p,#resume article ul,#resume .lede{margin:0}
-#resume .meta{color:var(--muted);font-size:14px}
-#resume ul{padding-left:20px}
-
-/* touch controls */
-#joy{position:fixed;z-index:4;width:110px;height:110px;margin:-55px 0 0 -55px;border-radius:50%;border:3px solid rgba(27,35,51,.55);background:rgba(255,253,245,.35);pointer-events:none}
-#joy i{position:absolute;left:50%;top:50%;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:var(--red);border-bottom:5px solid rgba(0,0,0,.3)}
-#jump,#grab{position:fixed;z-index:5;right:18px;bottom:22px;width:76px;height:76px;border-radius:50%;justify-content:center;font-size:17px;padding:0}
-#grab{bottom:110px}
-
-@media (max-width:720px){
-  #who h1{font-size:21px}
-  #who{padding:8px 12px 10px}
-  #tools{top:auto;bottom:200px;right:16px;flex-direction:column;align-items:flex-end}
-  #keys{display:none}
-  #score{bottom:16px}
-  #prompt{bottom:auto;top:92px;width:max-content;max-width:calc(100% - 32px)}
-  #toast{top:140px;width:max-content;max-width:calc(100% - 32px)}
-  #card{top:auto;left:16px;right:16px;bottom:16px;width:auto;max-height:58%}
-  #resume h1{font-size:32px}
-}
-@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@import url('css/base.css');
+@import url('css/hud.css');
+@import url('css/views.css');

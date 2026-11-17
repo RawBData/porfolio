@@ -1,0 +1,79 @@
+/*
+ * Area 2: Heads-Up Display (HUD), Toast Notifications & Touch Controls
+ */
+
+.hud { position: fixed; z-index: 5; display: flex; gap: 10px; pointer-events: none; }
+.hud > * { pointer-events: auto; }
+
+#who {
+  top: var(--edge); left: var(--edge);
+  flex-direction: column; gap: 4px;
+  max-width: min(340px, calc(100% - 2 * var(--edge)));
+  padding: 10px 16px 12px;
+  border-radius: 14px;
+  box-shadow: 0 5px 0 var(--ink);
+}
+#who h1 { font-size: 26px; font-weight: 700; }
+#who p { margin: 0; color: var(--muted); font-size: 14px; }
+
+#tools {
+  top: var(--edge); right: var(--edge);
+  flex-wrap: wrap; justify-content: flex-end;
+  max-width: calc(100% - 2 * var(--edge));
+}
+
+#score {
+  bottom: var(--edge); left: var(--edge);
+  flex-direction: column; align-items: flex-start; gap: 8px;
+}
+
+#keys {
+  max-width: min(600px, 62vw);
+  padding: 8px 14px; border-radius: 12px;
+  background: rgba(27, 35, 51, 0.82); color: #fff;
+  font-size: 14px; line-height: 1.9;
+}
+#keys kbd {
+  margin: 0 2px; padding: 1px 7px;
+  border-bottom: 3px solid #b9c0cf; border-radius: 5px;
+  background: #fff; color: var(--ink);
+  font-family: var(--font-display); font-weight: 600;
+}
+
+#prompt { bottom: 22px; left: 50%; align-items: center; transform: translateX(-50%); }
+
+#nudge {
+  display: none; padding: 3px 12px;
+  background: var(--yellow); color: var(--ink);
+  font-size: 16px; font-weight: 700;
+  white-space: nowrap; cursor: pointer;
+}
+@keyframes nudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(9px); } }
+
+#toast {
+  position: fixed; z-index: 6;
+  top: 84px; left: 50%; transform: translateX(-50%);
+  padding: 8px 18px; border-radius: 999px;
+  background: var(--ink); color: #fff;
+  font-family: var(--font-display); font-weight: 600;
+}
+
+/* Touch Controls */
+#joy {
+  position: fixed; z-index: 4;
+  width: 110px; height: 110px; margin: -55px 0 0 -55px;
+  border: 3px solid rgba(27, 35, 51, 0.55); border-radius: 50%;
+  background: rgba(255, 253, 245, 0.35); pointer-events: none;
+}
+#joy i {
+  position: absolute; top: 50%; left: 50%;
+  width: 46px; height: 46px; margin: -23px 0 0 -23px;
+  border-bottom: var(--press) solid rgba(0, 0, 0, 0.3);
+  border-radius: 50%; background: var(--red);
+}
+.thumb {
+  position: fixed; z-index: 5; right: 18px; bottom: 22px;
+  justify-content: center; width: 76px; height: 76px;
+  padding: 0; border-radius: 50%; font-size: 17px;
+}
+#grab { bottom: 110px; }
