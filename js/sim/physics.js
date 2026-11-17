@@ -7,7 +7,7 @@
   const BI = window.BI;
   if (!BI.hasWebGL) return;
 
-  const { T, PHYSICS, STATE, HALF_PI, onIsland } = BI;
+  const { T, PHYSICS, STATE, HALF_PI, onIsland, rampHeight } = BI;
   const scratch = {
     quaternion: new T.Quaternion(), vector: new T.Vector3(),
     matrix: new T.Matrix4(), euler: new T.Euler(),
@@ -40,8 +40,9 @@
       body.mesh.quaternion.premultiply(scratch.quaternion);
     }
 
-    const rest = halfHeight(body);
-    if (onIsland(pos.x, pos.z) && pos.y < rest && pos.y > -1.5) {
+    const floor = Math.max(0, rampHeight(pos.x, pos.z));
+    const rest = halfHeight(body) + floor;
+    if (onIsland(pos.x, pos.z) && pos.y < rest && pos.y > floor - 1.5) {
       pos.y = rest;
       velocity.y = velocity.y < -2.5 ? -velocity.y * PHYSICS.bounce : 0;
       const friction = Math.max(0, 1 - PHYSICS.groundFriction * dt);
@@ -57,7 +58,7 @@
         spin.multiplyScalar(0.8);
         if ((body.restTime += dt) > PHYSICS.settleTime) {
           body.mesh.quaternion.copy(flat);
-          pos.y = halfHeight(body);
+          pos.y = halfHeight(body) + floor;
           velocity.set(0, 0, 0);
           spin.set(0, 0, 0);
           Object.assign(body, { state: STATE.SETTLED, thrown: false });

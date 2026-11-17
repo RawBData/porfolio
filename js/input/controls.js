@@ -39,6 +39,7 @@
     const key = normaliseKey(event);
     if (['BUTTON', 'A'].includes(event.target.tagName) && (key === ' ' || key === 'Enter')) return;
     if (SCROLL_KEYS.includes(key)) event.preventDefault();
+    if (hero.route && hero.route.bike && key !== 'b') hero.route = null;   // any other key cancels the walk to the bike
     if (!event.repeat && KEY_ACTIONS[key]) KEY_ACTIONS[key]();
     keys[key] = true;
   });

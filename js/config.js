@@ -32,6 +32,7 @@
     pileSpots: [[8, -9], [-8, -9], [26, 17], [-26, -22], [11, -25], [-27, 24]],
     nameRows: [{ text: 'BEN', z: -4 }, { text: 'RAWNER', z: 2 }],
     fallLimit: -26,
+    ramp: { x0: -19, x1: -12, z: -26.5, width: 4, height: 3 },
   };
 
   const ZONE_SPOTS = {

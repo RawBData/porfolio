@@ -8,7 +8,7 @@
   const BI = window.BI;
   if (!BI.hasWebGL) return;
 
-  const { $, HERO, HALF_PI, dist2D, ui, say, hero, onIsland } = BI;
+  const { $, HERO, STATE, HALF_PI, dist2D, ui, say, hero, onIsland } = BI;
 
   const bike = { riding: false, crank: 0, figureLift: 1.26 };   // figureLift raises the rider onto the seat
   const exitButton = $('btnBike');
@@ -59,12 +59,19 @@
   const toggleBike = () => {
     if (bike.riding) dismountBike();
     else if (bikeInReach()) mountBike();
-    else say('Walk up to the bike, or click it, to ride.');
+    else {
+      hero.route = { bike: true, stall: 0 };
+      say('Heading to the bike. Press any other key to stop.');
+    }
   };
 
   const stepBike = (dt, speed) => {
-    if (!bike.riding) return;
-    const { group, wheels } = rig();
+    const { group, wheels, stand, home } = rig();
+    if (!bike.riding) {
+      const atHome = group.position.x === home.x && group.position.z === home.z;
+      if (atHome) group.position.y = stand.state === STATE.HOME ? 0 : -LIFT;
+      return;
+    }
     const [forwardX, forwardZ] = [Math.sin(hero.facing), Math.cos(hero.facing)];
     group.position.set(hero.x + forwardX * SEAT_BACK, hero.y - LIFT, hero.z + forwardZ * SEAT_BACK);
     group.rotation.y = hero.facing - HALF_PI;
