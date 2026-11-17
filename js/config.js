@@ -44,6 +44,7 @@
     speed: 9.5, jump: 10, radius: 0.55, stepUp: 0.4,
     grabReach: 2.3, clickReach: 1.9, carryHeight: 3.35,
     throwSpeed: 15, throwLift: 7.5,
+    bikeSpeed: 21, bikeReach: 2.6,
   };
 
   const PHYSICS = {

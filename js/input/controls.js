@@ -7,7 +7,7 @@
   const BI = window.BI;
   if (!BI.hasWebGL) return;
 
-  const { $, dom, ui, setResume, closeCard, toggleCard, thenRefocus, hero, grabOrThrow, rebuild, handleClick } = BI;
+  const { $, dom, ui, setResume, closeCard, toggleCard, thenRefocus, hero, grabOrThrow, rebuild, handleClick, toggleBike } = BI;
 
   const keys = {};
   const joystick = { pointerId: null, originX: 0, originY: 0, x: 0, y: 0, startedAt: 0, travel: 0 };
@@ -30,7 +30,7 @@
 
   const KEY_ACTIONS = {
     ' ': () => { hero.wantsJump = true; },
-    Enter: toggleCard, e: toggleCard, r: rebuild, f: grabOrThrow,
+    Enter: toggleCard, e: toggleCard, r: rebuild, f: grabOrThrow, b: toggleBike,
   };
 
   window.addEventListener('keydown', (event) => {

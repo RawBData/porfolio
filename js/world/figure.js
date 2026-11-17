@@ -53,6 +53,20 @@
     const [legLeft, legRight] = legs;
     const [armLeft, armRight] = arms;
 
+    if (BI.bike && BI.bike.riding) {
+      const pedal = Math.sin(BI.bike.crank) * 0.4;
+      legLeft.rotation.x = -0.6 + pedal;
+      legRight.rotation.x = -0.6 - pedal;
+      armLeft.rotation.x = armRight.rotation.x = hero.held ? -3.0 : -0.8;
+      armLeft.rotation.z = hero.held ? -0.15 : 0;
+      armRight.rotation.z = hero.held ? 0.15 : 0;
+      torsoRig.position.y = 0;
+      torsoRig.rotation.x = hero.held ? 0.1 : 0.3;
+      figure.position.set(hero.x, hero.y + BI.bike.figureLift, hero.z);
+      figure.rotation.y = hero.facing;
+      return;
+    }
+
     if (hero.onGround) {
       legLeft.rotation.x = swing * 0.95;
       legRight.rotation.x = -swing * 0.95;

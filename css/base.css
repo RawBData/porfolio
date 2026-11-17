@@ -60,6 +60,7 @@ a:focus-visible, button:focus-visible { outline: var(--outline); outline-offset:
 .brick:active { transform: translateY(3px); border-bottom-width: 2px; }
 .brick.red { background: var(--red); }
 .brick.green { background: var(--green); }
+.brick.blue { background: var(--blue); }
 .brick.yellow { background: var(--yellow); color: var(--ink); }
 
 .chip {

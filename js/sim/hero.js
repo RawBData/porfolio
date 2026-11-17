@@ -9,7 +9,7 @@
 
   const {
     WORLD, HERO, PHYSICS, clamp, ui, say, solids, onIsland,
-    hero, readMoveInput, followRoute, animateFigure,
+    hero, readMoveInput, followRoute, animateFigure, bike, stepBike,
   } = BI;
 
   const groundHeight = (x, z, y) => {
@@ -53,9 +53,11 @@
     if (moveX || moveZ) hero.route = null;
     else if (hero.route && !ui.resumeOpen) [moveX, moveZ] = followRoute(dt) || [0, 0];
 
-    const response = Math.min(1, (hero.onGround ? 14 : 5) * dt);
-    hero.vx += (moveX * HERO.speed - hero.vx) * response;
-    hero.vz += (moveZ * HERO.speed - hero.vz) * response;
+    const topSpeed = bike.riding ? HERO.bikeSpeed : HERO.speed;
+    const grip = bike.riding ? 7 : 14;
+    const response = Math.min(1, (hero.onGround ? grip : 5) * dt);
+    hero.vx += (moveX * topSpeed - hero.vx) * response;
+    hero.vz += (moveZ * topSpeed - hero.vz) * response;
     hero.x += hero.vx * dt;
     hero.z += hero.vz * dt;
     resolveSolids();
@@ -85,6 +87,7 @@
     }
     hero.stride += speed * dt * 1.5;
     animateFigure(speed);
+    stepBike(dt, speed);
   };
 
   Object.assign(BI, { stepHero });
