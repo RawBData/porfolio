@@ -49,7 +49,7 @@
       const pulse = 1 + Math.sin(elapsed * 3 + index) * 0.05;
       ring.scale.set(pulse, pulse, 1);
     });
-    spinners.forEach((mesh) => { mesh.rotation.y = elapsed * 0.9; });
+    spinners.forEach((mesh) => { if (mesh.userData.body.state === BI.STATE.HOME) mesh.rotation.y = elapsed * 0.9; });
   };
 
   const stepCamera = (dt) => {

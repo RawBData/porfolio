@@ -19,6 +19,29 @@
       z0: centerZ - sizeZ / 2, z1: centerZ + sizeZ / 2, height,
     });
 
+  /* The stunt ramp at the top of the map: a static wedge rising toward +x. */
+  const rampHeight = (x, z) => {
+    const { x0, x1, z: rampZ, width, height } = WORLD.ramp;
+    if (x < x0 || x > x1 || Math.abs(z - rampZ) > width / 2) return -Infinity;
+    return ((x - x0) / (x1 - x0)) * height;
+  };
+  const rampSlope = WORLD.ramp.height / (WORLD.ramp.x1 - WORLD.ramp.x0);
+
+  const buildRamp = () => {
+    const { x0, x1, z: rampZ, width, height } = WORLD.ramp;
+    const length = x1 - x0;
+    const wedge = new T.Shape();
+    wedge.moveTo(0, 0); wedge.lineTo(length, 0); wedge.lineTo(length, height); wedge.closePath();
+    const ramp = new T.Mesh(new T.ExtrudeGeometry(wedge, { depth: width, bevelEnabled: false }), BI.material(COLORS.red));
+    ramp.castShadow = ramp.receiveShadow = true;
+    ramp.position.set(x0, 0, rampZ - width / 2);
+    scene.add(ramp);
+    const angle = Math.atan2(height, length);
+    [0.2, 0.45, 0.7, 0.98].forEach((t) => {
+      box([0.35, 0.06, width - 0.2], COLORS.yellow, [x0 + t * length, t * height + 0.02, rampZ]).rotation.z = angle;
+    });
+  };
+
   const onIsland = (x, z, margin = 0) =>
     Math.abs(x) < WORLD.half + margin && Math.abs(z) < WORLD.half + margin;
 
@@ -88,5 +111,5 @@
     scene.add(studs);
   };
 
-  Object.assign(BI, { solids, addSolid, onPath, onIsland, buildIsland });
+  Object.assign(BI, { solids, addSolid, onPath, onIsland, buildIsland, rampHeight, rampSlope, buildRamp });
 })();

@@ -4,7 +4,7 @@ _Web developer and project manager in the San Francisco Bay Area._
 
 [Portfolio Live](https://rawbdata.github.io/porfolio/ "Brick Island")
 
-My portfolio is **Brick Island**: a small 3D toy-brick world you run around in. Projects, jobs, skills, education and contact details are landmarks on the map. Walk onto a glowing pad to read about each one, or knock everything over along the way. Hop on the bike at the SFRider landmark to ride around the island twice as fast, and you can still grab and throw bricks while you ride.
+My portfolio is **Brick Island**: a small 3D toy-brick world you run around in. Projects, jobs, skills, education and contact details are landmarks on the map. Walk onto a glowing pad to read about each one, or knock everything over along the way. Everything except the ground and the signs is built from loose blocks, so every landmark can be knocked over, picked up and thrown. Hop on the bike at the SFRider landmark to ride around the island twice as fast, and you can still grab and throw bricks while you ride. Take it up the red ramp at the top of the map to launch into the air.
 
 Prefer to just read? The **Résumé view** button shows the same content as a plain page.
 
@@ -25,10 +25,26 @@ Prefer to just read? The **Résumé view** button shows the same content as a pl
 | Grab a particular brick | Click it | Tap it |
 | Throw at a spot | Click while holding a brick | Tap while holding a brick |
 | Open or close a card | Enter | Tap the place name or "Details" |
-| Ride the bike (much faster) | Click the bike, or B when next to it | Tap the bike |
+| Ride the bike (much faster) | Click the bike, or B to walk to it and get on (any other key cancels) | Tap the bike |
 | Get off the bike | Exit bike button, or B | Exit bike button |
 | Grab or throw a brick while riding | F, or click a brick | Grab button, or tap a brick |
 | Rebuild everything | R | Rebuild bricks button |
+
+---
+
+## The Bike
+
+---
+
+The bike parked at the **SFRider** landmark is rideable.
+
+- **Get on:** click the bike, or press **B** from anywhere on the island. Your character walks over and climbs on. Change your mind on the way? Press any other key, or click somewhere else, to stop.
+- **Ride:** steer as usual. The bike goes about twice running speed, its wheels spin and the rider pedals.
+- **Bricks:** you can still grab, carry and throw bricks while riding. Ride into a landmark to knock it flying.
+- **Ramp:** ride up the red ramp at the top of the map and you launch off the end, about 17 units through the air.
+- **Get off:** the **Exit bike** button (top right) or **B**. The bike stays parked where you left it, and **Rebuild bricks** returns it to its stand.
+
+The code is in `js/sim/bike.js`. The ramp's shape and height are in `js/world/island.js`, and its position is set in `js/config.js` under `WORLD.ramp`.
 
 ---
 
