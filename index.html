@@ -1,16 +1,6 @@
 <!DOCTYPE html>
-<!--Time to  test
-	Time to test again
-	Story by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-	Open Source is a godsend
--->
-<!--
-	Need to add BBM and Delta Court Service
--->
-<html>
-  <head>
+<html lang="en">
+<head>
     <!-- Google Tag Manager -->
     <script>
       (function (w, d, s, l, i) {
@@ -28,25 +18,16 @@
       })(window, document, "script", "dataLayer", "GTM-TJLLLNT");
     </script>
     <!-- End Google Tag Manager -->
-
-    <title>Ben Rawner's Porfolio</title>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, user-scalable=no"
-    />
-    <link
-      rel="shortcut icon"
-      href="assets/images/favicon.ico"
-      type="image/x-icon"
-    />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <noscript>
-      <link rel="stylesheet" href="assets/css/noscript.css" />
-    </noscript>
-  </head>
-
-  <body class="is-preload">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ben Rawner Brick Island</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
     <!-- Google Tag Manager (noscript) -->
     <noscript
       ><iframe
@@ -57,357 +38,41 @@
       ></iframe
     ></noscript>
     <!-- End Google Tag Manager (noscript) -->
+<canvas id="stage" tabindex="0" aria-label="A small toy-brick island. Run around it with the arrow keys to find Ben Rawner's projects, experience and contact details. The Résumé view button shows the same content as plain text."></canvas>
 
-    <!-- Wrapper -->
-    <div id="wrapper" class="divided">
-      <!-- intro  -->
-      <section
-        class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right"
-      >
-        <div class="content">
-          <h1>Ben Rawner</h1>
-          <p class="major">
-            Hi my name is Ben, and I'm a software developer with experience in
-            Ruby on Rails, JavaScript, Node.js, React.js with Redux, PostgreSQL,
-            MongoDB and more. I graduated from UC Berkeley with a degree in
-            Sociology with a focus in organizational structure. I finished App
-            Academy, which had the focus of full stack development. I currently
-            work as a Developer/Project Manager. My education, coupled with my
-            coding experience, has been strongly informed by a desire to better
-            understand people, how we interact with our world, and how
-            technology solves problems in our everyday lives. As a self starting
-            fullstack software engineer I always seek to understand before
-            attempting to implement.
-          </p>
-          <ul class="actions stacked">
-            <li>
-              <a href="#first" class="button big wide smooth-scroll-middle"
-                >Projects</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div class="image">
-          <img
-            class="personal-image"
-            src="assets/images/profile01.jpg"
-            alt=""
-          />
-        </div>
-      </section>
+<div class="hud" id="who">
+  <h1>Ben Rawner</h1>
+  <p>Web developer and project manager, San Francisco Bay Area. Run around. Knock things over.</p>
+</div>
 
-      <!-- showcase 1 -->
-      <section
-        class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in projects"
-        id="first"
-      >
-        <div class="content">
-          <h2>Tower Guard</h2>
-          <p>
-            A single-player birds-eye view tower defense game with animated
-            characters and hordes of bad guys.
-          </p>
-          <ul class="actions stacked">
-            <li>
-              <a
-                href="https://rawbdata.github.io/TowerGuard/dist/"
-                target="_blank"
-                class="button"
-                >Visit Site</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://github.com/RawBData/TowerGuard"
-                target="_blank"
-                class="button"
-                >Visit Github Repo</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div class="image project-image-links">
-          <a href="https://rawbdata.github.io/TowerGuard/dist/" target="_blank">
-            <img src="assets/images/towerguard.gif" alt="" />
-          </a>
-        </div>
-      </section>
+<div class="hud" id="tools">
+  <button class="brick yellow" id="btnResume" type="button">Résumé view</button>
+  <button class="brick red" id="btnRebuild" type="button">Rebuild bricks</button>
+</div>
 
-      <!-- showcase 2 -->
-      <section
-        class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in projects"
-      >
-        <div class="content">
-          <h2>SFRider</h2>
-          <p>
-            A single page react map utilizing react-leaflet to display San
-            Francisco bicycling data.
-          </p>
-          <ul class="actions stacked">
-            <li>
-              <a
-                href="https://rawbdata.github.io/SFRider/"
-                target="_blank"
-                class="button"
-                >Visit Site</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://github.com/RawBData/SFRider"
-                target="_blank"
-                class="button"
-                >Visit Github Repo</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div class="image project-image-links">
-          <a href="https://rawbdata.github.io/SFRider/" target="_blank">
-            <img src="assets/images/sfrider.gif" alt="" />
-          </a>
-        </div>
-      </section>
+<div class="hud" id="score">
+  <span class="chip" id="found">Found 0 of 11</span>
+  <span class="chip" id="knocked">Bricks knocked 0</span>
+  <div id="keys"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or arrows to run <kbd>Space</kbd> jump <kbd>F</kbd> grab the nearest brick, then throw it <kbd>Enter</kbd> open or close a card <kbd>Click</kbd> walk there, grab that brick, or throw the one you hold <kbd>R</kbd> rebuild</div>
+</div>
 
-      <!-- Showcase 3 -->
-      <section
-        class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in projects"
-      >
-        <div class="content">
-          <h2>Trivialand</h2>
-          <p>
-            A fullstack single-page multi-player Trivia game made with concepts
-            inspired by Jeopardy and HQ. Test your knowledge in a single player
-            game or challenge your friends to some trivia fun!
-          </p>
-          <ul class="actions stacked">
-            <!-- <li><a href="https://trivialand-app.herokuapp.com/" target="_blank" class="button">Visit Site</a>
-					</li> -->
-            <li>
-              <a
-                href="https://github.com/ashap94/MERN_TRIVIALAND"
-                target="_blank"
-                class="button"
-                >Visit Github Repo</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div class="image project-image-links project-image-links-right">
-          <a href="https://trivialand-app.herokuapp.com/" target="_blank">
-            <img src="assets//images/Trivialand.gif" alt="" />
-          </a>
-        </div>
-      </section>
+<div class="hud" id="prompt" hidden><button class="brick green" id="btnOpen" type="button">Open</button></div>
+<div id="toast" role="status" hidden></div>
 
-      <!-- Showcase 4  -->
-      <section
-        class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in projects"
-      >
-        <div class="content">
-          <h2>Checkoff</h2>
-          <p>
-            A fullstack single-page “Remember the Milk” pixel perfect clone
-            where users can add todos, lists, schedules and tags. Comes with
-            encrpyted login from any connected device on multiple browsers.
-          </p>
-          <ul class="actions stacked">
-            <!-- <li><a href="https://checkoff-rem-the-milk.herokuapp.com/" target="_blank" class="button">Visit
-							Site</a></li> -->
-            <li>
-              <a
-                href="https://github.com/RawBData/Checkoff"
-                target="_blank"
-                class="button"
-                >Visit Github Repo</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div class="image project-image-links">
-          <a
-            href="https://checkoff-rem-the-milk.herokuapp.com/"
-            target="_blank"
-          >
-            <img src="assets/images/checkoff.png" alt="" />
-          </a>
-        </div>
-      </section>
+<aside id="card" aria-live="polite" hidden>
+  <header><div><p id="cardKind"></p><h2 id="cardTitle"></h2></div><button class="x" id="cardClose" type="button" aria-label="Close card">✕</button></header>
+  <div class="body" id="cardBody"></div>
+</aside>
 
-      <!-- Five -->
-      <section class="wrapper style1 align-center">
-        <div class="inner">
-          <h2>Skills</h2>
-          <p>
-            Below is just a sample of the different technologies I have worked
-            with in alphabetical order
-          </p>
-        </div>
+<div id="joy" hidden><i></i></div>
+<button class="brick" id="jump" type="button" hidden>Jump</button>
+<button class="brick red" id="grab" type="button" hidden>Grab</button>
 
-        <!-- Gallery -->
-        <div class="gallery style2 medium lightbox onscroll-fade-in">
-          <article>
-            <img class="skills-images" src="assets/images/ajax.png" alt="" />
-          </article>
-          <article>
-            <img class="skills-images" src="assets/images/axios.png" alt="" />
-          </article>
-          <article>
-            <img class="skills-images" src="assets/images/bc.png" alt="" />
-          </article>
-          <article>
-            <img class="skills-images" src="assets/images/css.png" alt="" />
-          </article>
-          <article>
-            <img
-              class="skills-images"
-              src="assets/images/express_logo.png"
-              alt=""
-            />
-          </article>
-          <article>
-            <img class="skills-images" src="assets/images/git.png" alt="" />
-          </article>
-          <article>
-            <img class="skills-images" src="assets/images/HTML5.png" alt="" />
-          </article>
-          <article>
-            <img class="skills-images" src="assets/images/jslogo.png" alt="" />
-          </article>
-          <article>
-            <img class="skills-images" src="assets/images/jquery.png" alt="" />
-          </article>
-          <article>
-            <img class="skills-images" src="assets/images/mongo.png" alt="" />
-          </article>
-          <article>
-            <img class="skills-images" src="assets/images/nodejs.png" alt="" />
-          </article>
-          <article>
-            <img
-              class="skills-images"
-              src="assets/images/postgresql.png"
-              alt=""
-            />
-          </article>
-          <article>
-            <img class="skills-images" src="assets/images/rails.png" alt="" />
-          </article>
-          <article>
-            <img class="skills-images" src="assets/images/react.png" alt="" />
-          </article>
-          <article>
-            <img class="skills-images" src="assets/images/redux.png" alt="" />
-          </article>
-          <article>
-            <img class="skills-images" src="assets/images/rspec.png" alt="" />
-          </article>
-          <article>
-            <img class="skills-images" src="assets/images/sqlite.png" alt="" />
-          </article>
-          <article>
-            <img
-              class="skills-images"
-              src="assets/images/magnolia.png"
-              alt=""
-            />
-          </article>
-          <article>
-            <img class="skills-images" src="assets/images/nosql.png" alt="" />
-          </article>
-          <article>
-            <img class="skills-images" src="assets/images/webpack.png" alt="" />
-          </article>
-        </div>
-      </section>
+<div id="resume" role="dialog" aria-modal="true" aria-labelledby="resumeName" hidden>
+  <div class="sheet" id="sheet"></div>
+</div>
 
-      <!-- Six -->
-      <section class="wrapper style1 align-center">
-        <div class="inner">
-          <h2>Get In Touch</h2>
-          <p>I currently live and work in the Bay Area</p>
-          <div class="items style1 medium onscroll-fade-in">
-            <section>
-              <a
-                href="https://www.linkedin.com/in/benjaminrawner/"
-                target="_blank"
-                class="social-links"
-              >
-                <span
-                  class="icon brands solid style2 major fa-linkedin-in"
-                ></span>
-                <h3>LinkedIn</h3>
-              </a>
-            </section>
-            <section>
-              <a
-                href="https://angel.co/ben-rawner"
-                target="_blank"
-                class="social-links"
-              >
-                <span
-                  class="icon brands solid style2 major fa-angellist"
-                ></span>
-                <h3>Angel List</h3>
-              </a>
-            </section>
-            <section>
-              <a
-                href="https://github.com/RawBData"
-                target="_blank"
-                class="social-links"
-              >
-                <span class="icon brands solid style2 major fa-github"></span>
-                <h3>Github</h3>
-              </a>
-            </section>
-            <section>
-              <div class="b social-links">
-                <span class="icon solid style2 major fa-wifi"></span>
-                <h3>Text or Phone</h3>
-                <h3>(510)735-5164</h3>
-              </div>
-            </section>
-            <section>
-              <div div class="b social-links">
-                <span class="icon solid style2 major fa-envelope"></span>
-                <h3>E-mail</h3>
-                <h3>BenRaw11@gmail.com</h3>
-              </div>
-            </section>
-            <section>
-              <a
-                target="-blank"
-                href="assets/media/Ben_Rawner_Resume.pdf"
-                class="social-links"
-              >
-                <span
-                  class="icon brands solid style2 major fa-instagram"
-                ></span>
-                <h3>Resume</h3>
-              </a>
-            </section>
-          </div>
-        </div>
-      </section>
-
-      <!-- Footer -->
-      <footer class="wrapper style1 align-center">
-        <div class="inner">
-          <p>
-            &copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.
-          </p>
-        </div>
-      </footer>
-    </div>
-
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.scrollex.min.js"></script>
-    <script src="assets/js/jquery.scrolly.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
-  </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="script.js"></script>
+</body>
 </html>
