@@ -89,6 +89,7 @@
       body.velocity.set(0, 0, 0); body.spin.set(0, 0, 0);
       Object.assign(body, { state: STATE.HOME, thrown: false, grace: 0, counted: false });
     });
+    if (BI.parkBikeHome) BI.parkBikeHome();
     say('All rebuilt. Have another go.');
   };
 

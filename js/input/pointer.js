@@ -10,6 +10,7 @@
   const {
     T, COLORS, WORLD, HERO, STATE, clamp, dist2D,
     camera, linear, groundDecal, ui, bricks, hero, pickUp, throwHeld,
+    bike, isBikePart, bikeInReach, mountBike,
   } = BI;
 
   const raycaster = new T.Raycaster();
@@ -29,7 +30,9 @@
     const candidates = bricks
       .filter((body) => body.state !== STATE.LOST && body !== hero.held)
       .map((body) => body.mesh);
+    if (!bike.riding && BI.bikeRig) candidates.push(BI.bikeRig.group);
     const [hit] = raycaster.intersectObjects(candidates, true);
+    if (hit && isBikePart(hit.object)) return { bike: true, body: null, point: hit.point.clone() };
     if (hit) return { body: bodyOf(hit.object), point: hit.point.clone() };
 
     const { origin, direction } = raycaster.ray;
@@ -49,6 +52,9 @@
     if (hero.held) {
       hero.route = null;
       throwHeld(picked.point);
+    } else if (picked.bike) {
+      if (bikeInReach()) mountBike();
+      else hero.route = { bike: true, stall: 0 };
     } else if (picked.body) {
       hero.route = { brick: picked.body, stall: 0 };
     } else {
@@ -57,7 +63,10 @@
     }
   };
 
-  const routeTarget = (route) => (route.brick ? route.brick.mesh.position : route);
+  const routeTarget = (route) => {
+    if (route.bike) return BI.bikeRig.group.position;
+    return route.brick ? route.brick.mesh.position : route;
+  };
 
   const followRoute = (dt) => {
     const route = hero.route;
@@ -66,8 +75,11 @@
     const distance = Math.hypot(dx, dz) || 0.001;
 
     const brickGone = route.brick && route.brick.state >= STATE.LOST;
-    const arrived = route.brick ? distance < HERO.clickReach : distance < 0.3;
+    const brickReach = bike.riding ? HERO.bikeReach : HERO.clickReach;
+    const reach = route.bike ? HERO.bikeReach * 0.8 : route.brick ? brickReach : 0.3;
+    const arrived = distance < reach;
     if (arrived && route.brick && !brickGone) pickUp(route.brick);
+    if (arrived && route.bike) mountBike();
 
     const moved = dist2D(hero.x, hero.z, route.lastX, route.lastZ) / dt;
     route.lastX = hero.x;
@@ -78,7 +90,7 @@
       hero.route = null;
       return null;
     }
-    const ease = route.brick ? 1 : Math.min(1, distance / 1.5 + 0.25);
+    const ease = route.brick || route.bike ? 1 : Math.min(1, distance / 1.5 + 0.25);
     return [(dx / distance) * ease, (dz / distance) * ease];
   };
 

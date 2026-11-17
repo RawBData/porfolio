@@ -45,17 +45,30 @@
       return 2.2;
     },
     sfrider(zone, group) {
-      const { blue, ink, steel } = COLORS;
+      const { blue, ink, steel, paper } = COLORS;
       const wheelY = 1.23;
-      const wheel = new T.TorusGeometry(0.8, 0.13, 10, 28);
-      [-1.15, 1.15].forEach((x) => { const m = new T.Mesh(wheel, material(ink)); m.position.set(x, wheelY, 0); m.castShadow = true; group.add(m); });
+      // The bike lives in its own group so it can be ridden away from its stand.
+      const bike = new T.Group();
+      bike.position.set(zone.at[0], 0, zone.at[1]);
+      scene.add(bike);
+      const tyre = new T.TorusGeometry(0.8, 0.13, 10, 28);
+      const wheels = [-1.15, 1.15].map((x) => {
+        const wheel = new T.Group();
+        wheel.position.set(x, wheelY, 0);
+        bike.add(wheel);
+        const rim = new T.Mesh(tyre, material(ink)); rim.castShadow = true; wheel.add(rim);
+        [0, HALF_PI].forEach((angle) => { box([1.5, 0.07, 0.07], paper, [0, 0, 0], wheel).rotation.z = angle; });
+        return wheel;
+      });
       const tube = ([x1, y1], [x2, y2]) => {
-        box([0.14, Math.hypot(x2 - x1, y2 - y1), 0.14], blue, [(x1 + x2) / 2, (y1 + y2) / 2, 0], group).rotation.z = -Math.atan2(x2 - x1, y2 - y1);
+        box([0.14, Math.hypot(x2 - x1, y2 - y1), 0.14], blue, [(x1 + x2) / 2, (y1 + y2) / 2, 0], bike).rotation.z = -Math.atan2(x2 - x1, y2 - y1);
       };
       const [rH, fH, cr, st, hd] = [[-1.15, wheelY], [1.15, wheelY], [0.05, wheelY], [-0.35, 2.25], [0.85, 2.3]];
       [[rH, st], [rH, cr], [st, cr], [st, hd], [cr, hd], [fH, [0.8, 2.65]]].forEach(([a, b]) => tube(a, b));
-      boxes(group, [[[4.4, 0.3, 1.6], steel, [0, 0.15, 0]], [[0.6, 0.14, 0.3], ink, [-0.4, 2.42, 0]], [[0.14, 0.14, 1], ink, [0.8, 2.7, 0]]]);
-      addSolid(...zone.at, 4.4, 1.6, 2.6);
+      boxes(group, [[[4.4, 0.3, 1.6], steel, [0, 0.15, 0]]]);
+      boxes(bike, [[[0.6, 0.14, 0.3], ink, [-0.4, 2.42, 0]], [[0.14, 0.14, 1], ink, [0.8, 2.7, 0]]]);
+      addSolid(...zone.at, 4.4, 1.6, 0.3);
+      BI.bikeRig = { group: bike, wheels, home: { x: zone.at[0], z: zone.at[1] } };
       return 2.7;
     },
     wordstar(zone, group) {

@@ -12,7 +12,8 @@
   const carryHeldBrick = () => {
     const body = hero.held;
     if (!body) return;
-    body.mesh.position.set(hero.x, hero.y + HERO.carryHeight + body.size[1] / 2, hero.z);
+    const lift = BI.bike && BI.bike.riding ? BI.bike.figureLift : 0;
+    body.mesh.position.set(hero.x, hero.y + lift + HERO.carryHeight + body.size[1] / 2, hero.z);
     body.mesh.rotation.set(0, hero.facing, 0);
   };
 
